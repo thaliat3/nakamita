@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: asistencia-web
+    env: python
+    plan: free
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: bash -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn control_asistencia.wsgi --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: DEBUG
+        value: "False"
+      - key: DB_LIVE
+        value: "1"
