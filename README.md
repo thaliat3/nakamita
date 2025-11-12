@@ -1,4 +1,4 @@
-# Control de Asistencia (Django)
+# nakamita
 
 Aplicación web para el registro de asistencia de empleados con soporte para exportación a Excel, validación por dispositivo (FingerprintJS ID), y autenticación de personal administrativo para descarga de reportes.
 
