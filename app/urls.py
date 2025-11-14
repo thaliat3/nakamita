@@ -6,7 +6,7 @@ urlpatterns = [
     path('', views.pagina_principal, name='pagina_principal'),
     
     # Paso previo: Control de Actividades
-    path('actividades/<int:empleado_id>/', views.control_actividades, name='control_actividades'),
+    # path('actividades/<int:empleado_id>/', views.control_actividades, name='control_actividades'),  # ACTIVIDADES deshabilitadas
 
     # Sistema tradicional (mantenido para compatibilidad)
     path('manual/', views.registrar_asistencia, name='registrar_asistencia'),

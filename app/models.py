@@ -165,18 +165,19 @@ class RegistroAsistencia(models.Model):
             fecha_registro=fecha
         ).select_related('tipo').order_by('hora_registro')
 
-class ActividadProyecto(models.Model):
-    """Registro local de proyecto y actividad declarada por el empleado. Solo una vez por día (al registrar Entrada)."""
-    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)
-    proyecto = models.CharField(max_length=100)
-    actividad = models.CharField(max_length=100)
-    fecha = models.DateField(auto_now_add=True)
-    hora = models.TimeField(auto_now_add=True)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=["empleado", "fecha"], name="uniq_actividadpor_dia")
-        ]
-
-    def __str__(self):
-        return f"{self.empleado.nombre_completo} - {self.proyecto} / {self.actividad} - {self.fecha} {self.hora}"
+# ACTIVIDADES: Deshabilitado temporalmente
+# class ActividadProyecto(models.Model):
+#     """Registro local de proyecto y actividad declarada por el empleado. Solo una vez por día (al registrar Entrada)."""
+#     empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)
+#     proyecto = models.CharField(max_length=100)
+#     actividad = models.CharField(max_length=100)
+#     fecha = models.DateField(auto_now_add=True)
+#     hora = models.TimeField(auto_now_add=True)
+#
+#     class Meta:
+#         constraints = [
+#             models.UniqueConstraint(fields=["empleado", "fecha"], name="uniq_actividadpor_dia")
+#         ]
+#
+#     def __str__(self):
+#         return f"{self.empleado.nombre_completo} - {self.proyecto} / {self.actividad} - {self.fecha} {self.hora}"
